@@ -1,0 +1,72 @@
+# ELK Stack Configuration - Simplified
+global:
+  namespace: elk-demo
+
+# Elasticsearch configuration
+elasticsearch:
+  enabled: true
+  replicaCount: 1
+  
+  image:
+    repository: docker.elastic.co/elasticsearch/elasticsearch
+    tag: "8.5.1"
+    pullPolicy: IfNotPresent
+  
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 2Gi
+    requests:
+      cpu: 500m
+      memory: 1Gi
+  
+  persistence:
+    enabled: true
+    size: 10Gi
+  
+  service:
+    type: ClusterIP
+    port: 9200
+
+# Kibana configuration
+kibana:
+  enabled: true
+  replicaCount: 1
+  
+  image:
+    repository: docker.elastic.co/kibana/kibana
+    tag: "8.5.1"
+    pullPolicy: IfNotPresent
+  
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 2Gi
+    requests:
+      cpu: 500m
+      memory: 1Gi
+  
+  service:
+    type: NodePort
+    port: 5601
+    nodePort: 30561
+  
+  kibana:
+    env:
+      - name: "ELASTICSEARCH_HOSTS"
+        value: "http://elk-stack-elasticsearch:9200"
+      - name: "SERVER_HOST"
+        value: "0.0.0.0"
+      - name: "SERVER_PORT"
+        value: "5601"
+      - name: "XPACK_SECURITY_ENABLED"
+        value: "false"
+      - name: "XPACK_MONITORING_ENABLED"
+        value: "false"
+      - name: "LOGGING_QUIET"
+        value: "false"
+    
+    config: {}  # Remove the config file to avoid validation issues
+  
+  elasticsearch:
+    enabled: false  # Disable subchart since we're using the parent one

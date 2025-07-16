@@ -1,0 +1,16 @@
+apiVersion: v2
+name: elasticsearch
+description: Production-ready Elasticsearch Helm chart
+type: application
+version: 1.0.0
+appVersion: "8.5.1"
+keywords:
+  - elasticsearch
+  - search
+  - logging
+home: https://www.elastic.co/
+sources:
+  - https://github.com/la-belle-femme/250716-ticket-269-team-wariors
+maintainers:
+  - name: Team Warriors
+    email: team@warriors.com

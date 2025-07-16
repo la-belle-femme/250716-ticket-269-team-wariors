@@ -1,0 +1,24 @@
+apiVersion: v2
+name: elk-stack
+description: Complete ELK Stack with Elasticsearch and Kibana
+type: application
+version: 1.0.0
+appVersion: "8.5.1"
+keywords:
+  - elk
+  - elasticsearch
+  - kibana
+  - logging
+home: https://www.elastic.co/
+sources:
+  - https://github.com/la-belle-femme/250716-ticket-269-team-wariors
+maintainers:
+  - name: Team Warriors
+    email: team@warriors.com
+dependencies:
+  - name: elasticsearch
+    version: 1.0.0
+    repository: file://../elasticsearch
+  - name: kibana
+    version: 1.0.0
+    repository: file://../kibana

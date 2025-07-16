@@ -1,0 +1,9 @@
+dependencies:
+- name: elasticsearch
+  repository: file://../elasticsearch
+  version: 1.0.0
+- name: kibana
+  repository: file://../kibana
+  version: 1.0.0
+digest: sha256:2e22566897c0c0e773549b1640f08a234a95bb4949038aec06e1b13f735fede0
+generated: "2025-07-16T10:34:10.513035533Z"
